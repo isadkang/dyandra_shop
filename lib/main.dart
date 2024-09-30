@@ -1,3 +1,6 @@
+import 'package:dyandra_shop/screen/home_screen.dart';
+import 'package:dyandra_shop/screen/opening_screen.dart';
+import 'package:dyandra_shop/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +12,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      title: 'Dyandra Shop',
+      theme: ThemeData(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/opening': (context) => const OpeningScreen(),
+        '/home': (context) => const HomeScreen(),
+      },
     );
   }
 }
