@@ -1,9 +1,12 @@
 import 'package:dyandra_shop/screen/home_screen.dart';
-import 'package:dyandra_shop/screen/opening_screen.dart';
+// import 'package:dyandra_shop/screen/opening_screen.dart';
 import 'package:dyandra_shop/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('id_ID', null);
   runApp(const MainApp());
 }
 
@@ -18,7 +21,7 @@ class MainApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
-        '/opening': (context) => const OpeningScreen(),
+        // '/opening': (context) => const OpeningScreen(),
         '/home': (context) => const HomeScreen(),
       },
     );
