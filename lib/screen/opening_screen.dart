@@ -24,13 +24,13 @@ class OpeningScreen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 200.0),
+            padding: const EdgeInsets.only(top: 100.0),
             child: OutlinedButton(
               style: OutlinedButton.styleFrom(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 150, vertical: 25),
+                      const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
                   shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
                   side: const BorderSide(
                     color: accentColor,

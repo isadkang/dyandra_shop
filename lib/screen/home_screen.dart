@@ -107,8 +107,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(12),
                     child: Image.asset(
                       'images/banner.jpg',
-                      height: 150,
-                      width: 150,
+                      height: 100,
+                      width: 100,
                       fit: BoxFit.cover,
                     ),
                   )
@@ -163,18 +163,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     'Sofa 2 dudukan dengan kain buludru coklat yang sangat empuk dan lembut.',
                     'IDR 5.000.000',
                     'images/sofa.png',
+                    "- Busa Tebal\n- Free Pemasangan Kaki Sofa\n- Free Pengiriman\n- Garansi 1 Tahun",
                   ),
                   _productItem(
                     'Modern Chair',
                     'Modern Chair adalah kursi single seat yang dilengkapi dengan senderan yang nyaman dan dudukan yang empuk.',
                     'IDR 1.250.000',
                     'images/modern-chair.png',
+                    "- Busa Tebal\n- Free Pemasangan Kaki Kursi\n- Free Pengiriman\n- Garansi 1 Tahun",
                   ),
                   _productItem(
                     'Desk Black Matte',
                     'Meja belajar dengan design minimalis dan cat yang merata, dilengkapi dengan 2 laci utama dan 1 laci besar untuk barang yang membutuhkan ruang lebih besar.',
                     'IDR 750.000',
-                    'images/modern-chair.png',
+                    'images/desk.jpg',
+                    "Free Pengiriman\n- Garansi 1 Tahun",
                   ),
                 ],
               ),
@@ -218,8 +221,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _productItem(
-      String title, String description, String price, String imageUrl) {
+  Widget _productItem(String title, String description, String price,
+      String imageUrl, String benefitDesc) {
     return InkWell(
       onTap: () {
         Navigator.push(
