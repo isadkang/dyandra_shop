@@ -233,6 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
               description: description,
               price: price,
               imageUrl: imageUrl,
+              benefitDesc: benefitDesc,
             ),
           ),
         );

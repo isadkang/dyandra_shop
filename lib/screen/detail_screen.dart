@@ -7,6 +7,7 @@ class DetailScreen extends StatelessWidget {
   final String description;
   final String price;
   final String imageUrl;
+  final String benefitDesc;
 
   const DetailScreen({
     super.key,
@@ -14,6 +15,7 @@ class DetailScreen extends StatelessWidget {
     required this.description,
     required this.price,
     required this.imageUrl,
+    required this.benefitDesc,
   });
 
   @override
@@ -39,74 +41,48 @@ class DetailScreen extends StatelessWidget {
           },
         ),
       ),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset(imageUrl),
-                // Product Details
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                          color: Colors.brown,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        price,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.black,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        description,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          bool isMobile = constraints.maxWidth < 600;
 
-                      // Benefit Section
-                      const Text(
-                        "Benefit:",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.black,
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: isMobile
+                  ? Stack(
+                      children: [
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(imageUrl),
+                              const SizedBox(height: 16),
+                              ..._buildProductDetails(),
+                            ]),
+                      ],
+                    )
+                  : Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Image Section
+                        Expanded(
+                          flex: 1,
+                          child: Image.asset(imageUrl),
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        "- Busa Tebal\n- Free Pemasangan Kaki Sofa\n- Free Pengiriman\n- Garansi 1 Tahun",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black87,
+                        const SizedBox(width: 20),
+                        // Product Details Section
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: _buildProductDetails(),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-              ],
+                      ],
+                    ),
             ),
-          ],
-        ),
+          );
+        },
       ),
-
       // Bottom Buttons
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
@@ -156,7 +132,7 @@ class DetailScreen extends StatelessWidget {
                 label: const Text(
                   "Tambah Favorite",
                   style: TextStyle(color: Colors.black),
-                ), // Icon(Colors.black,),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: accentColor,
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -168,5 +144,54 @@ class DetailScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Widget> _buildProductDetails() {
+    return [
+      Text(
+        title,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 22,
+          color: Colors.brown,
+        ),
+      ),
+      const SizedBox(height: 8),
+      Text(
+        price,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+          color: Colors.black,
+        ),
+      ),
+      const SizedBox(height: 8),
+      Text(
+        description,
+        style: const TextStyle(
+          fontSize: 16,
+          color: Colors.black87,
+        ),
+      ),
+      const SizedBox(height: 16),
+
+      // Benefit Section
+      const Text(
+        "Benefit:",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          color: Colors.black,
+        ),
+      ),
+      const SizedBox(height: 8),
+      Text(
+        benefitDesc,
+        style: const TextStyle(
+          fontSize: 14,
+          color: Colors.black87,
+        ),
+      ),
+    ];
   }
 }
